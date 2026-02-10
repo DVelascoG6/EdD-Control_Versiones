@@ -4,6 +4,7 @@
 Refactorizar un sistema de notificaciones monolítico en un diseño modular y mantenible.
 
 ## Estructura del Proyecto
+```bash
 /P4.1-notifications-base
 ├── README.md # Este archivo
 ├── .gitignore # Archivos a ignorar (localizado en un directorio superior)
@@ -11,6 +12,7 @@ Refactorizar un sistema de notificaciones monolítico en un diseño modular y ma
 ├── Main.java
 ├── P4.1-GitHub_Master-Colaboración_Controlada.pdf
 └── /documentacion # Capturas y evidencias
+```
 
 ## Cómo Empezar
 1. **Fork** este repositorio (botón arriba a la derecha)
