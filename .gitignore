@@ -1,0 +1,32 @@
+# Archivos compilados
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE y herramientas
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos del sistema de construcción
+target/
+build/
+out/
+bin/
+
+# Archivos modificados por GVim
+*.orig
