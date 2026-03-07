@@ -1,26 +1,27 @@
-// NotificationManager.java - Código a refactorizar
+// NotificationManager.java - Gestor refactorizado de notificaciones
 public class NotificationManager {
-    // TODO: Separar en clases diferentes: EmailService, SMSService, PushService
-    // TODO: Aplicar patrón Strategy para los tipos de notificación
-    // TODO: Añadir sistema de logs
-    
+
+    /**
+     * Envía una notificación usando el servicio adecuado según el tipo.
+     * @param type    Tipo de notificación: "email", "sms", "push"
+     * @param message Mensaje a enviar
+     * @param recipient Destinatario
+     */
     public void send(String type, String message, String recipient) {
-        if (type.equals("email")) {
-            // Código para enviar email
-            System.out.println("Enviando email a " + recipient + ": " + message);
-            // Lógica compleja de email aquí...
-        } else if (type.equals("sms")) {
-            // Código para enviar SMS
-            System.out.println("Enviando SMS a " + recipient + ": " + message);
-            // Lógica compleja de SMS aquí...
-        } else if (type.equals("push")) {
-            // Código para notificación push
-            System.out.println("Enviando push a " + recipient + ": " + message);
-            // Lógica compleja de push aquí...
+        Logger.log("INFO", "Iniciando envío de notificación tipo: " + type);
+        NotificationService service = NotificationFactory.getService(type);
+        service.send(recipient, message);
+    }
+
+    /**
+     * Envía una notificación a múltiples destinatarios.
+     * @param type       Tipo de notificación
+     * @param message    Mensaje a enviar
+     * @param recipients Lista de destinatarios
+     */
+    public void sendToMultiple(String type, String message, String... recipients) {
+        for (String recipient : recipients) {
+            send(type, message, recipient);
         }
     }
-    
-    // TODO: Añadir método para enviar a múltiples destinatarios
-    // TODO: Añadir sistema de reintentos
-    // TODO: Añadir validación de parámetros
 }
