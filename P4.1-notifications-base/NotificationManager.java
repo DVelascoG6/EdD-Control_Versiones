@@ -1,25 +1,30 @@
-// NotificationManager.java - Código a refactorizar
 public class NotificationManager {
+
+    private NotificationService strategy;
+
+    public void setStrategy(NotificationService strategy) {
+        this.strategy = strategy;
+    }
+
+    public void send(String message, String recipient)
+    {
+        if (strategy == null)
+            throw new IllegalStateException("\n[!] Estrategia no definida!.");
+
+            try 
+            {
+                strategy.sendNotification(message, recipient);
+                return;
+            } catch (Exception e) 
+            {
+                System.out.println("\n[i] Fallo al enviar la notificación."); 
+            }
+    }
+
+    // NotificationManager.java - Código a refactorizar
     // TODO: Separar en clases diferentes: EmailService, SMSService, PushService
     // TODO: Aplicar patrón Strategy para los tipos de notificación
     // TODO: Añadir sistema de logs
-    
-    public void send(String type, String message, String recipient) {
-        if (type.equals("email")) {
-            // Código para enviar email
-            System.out.println("Enviando email a " + recipient + ": " + message);
-            // Lógica compleja de email aquí...
-        } else if (type.equals("sms")) {
-            // Código para enviar SMS
-            System.out.println("Enviando SMS a " + recipient + ": " + message);
-            // Lógica compleja de SMS aquí...
-        } else if (type.equals("push")) {
-            // Código para notificación push
-            System.out.println("Enviando push a " + recipient + ": " + message);
-            // Lógica compleja de push aquí...
-        }
-    }
-    
     // TODO: Añadir método para enviar a múltiples destinatarios
     // TODO: Añadir sistema de reintentos
     // TODO: Añadir validación de parámetros
