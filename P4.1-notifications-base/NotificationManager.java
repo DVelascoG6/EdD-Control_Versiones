@@ -10,7 +10,7 @@ public class NotificationManager {
         this.pushService = new PushService();
     }
 
-    public void sendNotification(String type, String recipient, String message) {
+    public void send(String type, String message, String recipient) {
         switch (type.toLowerCase()) {
             case "email":
                 emailService.send(recipient, message);
