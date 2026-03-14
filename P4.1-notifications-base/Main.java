@@ -4,7 +4,7 @@ public class Main {
         NotificationManager manager = new NotificationManager();
         
         // Ejemplos de uso
-        manager.send("email", "Bienvenido al sistema", "usuario@email.com");
+        manager.send("email", "miau al sistema", "usuario@email.com");
         manager.send("sms", "Tu código es 3321", "+34123456789");
         manager.send("push", "Tienes un nuevo mensaje", "user_device_001");
     }
