@@ -41,3 +41,16 @@ Para cada bug, incluir en el PR:
 ├── E2-Full_Stack_Developer-Debug+Git.pdf
 └── /documentacion/    # Para las capturas de pantalla, entre otras las del debugger
 ```
+## Bugs corregidos
+
+- **#9** Añadidos getters `getIsbn()` e `isAvailable()` en Book
+- **#10** `borrow()` ahora valida si el libro ya está prestado
+- **#11** `returnBook()` ahora valida si el libro ya estaba disponible
+- **#12** `addBook()` previene libros duplicados por ISBN
+- **#13** `findBookByTitle()` es insensible a mayúsculas
+- **#15** `findAvailableBooks()` filtra correctamente con `isAvailable()`
+- **#16** Añadido método `removeBook()`
+
+## Tests unitarios
+Se han añadido tests en `LibraryTest.java` que reproducen cada bug
+antes de la corrección y verifican el funcionamiento tras el fix.
