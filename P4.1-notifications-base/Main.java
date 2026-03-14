@@ -1,12 +1,17 @@
 // Main.java - Programa principal
 public class Main {
     public static void main(String[] args) {
-        // Creamos un nuevo manager
-        NotificationManager manager = new NotificationManager();
-        
-        // Probamos todas las funcionalidades
-        manager.send("email", "Bienvenido al sistema", "usuario@email.com");
-        manager.send("sms", "Tu código es 1234", "+34123456789");
-        manager.send("push", "Tienes un nuevo mensaje", "user_device_001");
+
+        // Email
+        NotificationManager emailManager = new NotificationManager(NotificationFactory.create("email"));
+        emailManager.notify("Bienvenido al sistema");
+
+        // SMS
+        NotificationManager smsManager = new NotificationManager(NotificationFactory.create("sms"));
+        smsManager.notify("Tu código es 1234");
+
+        // Push
+        NotificationManager pushManager = new NotificationManager(NotificationFactory.create("push"));
+        pushManager.notify("Tienes un nuevo mensaje");
     }
 }
