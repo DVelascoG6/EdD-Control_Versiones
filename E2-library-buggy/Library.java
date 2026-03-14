@@ -1,34 +1,50 @@
+
 // Library.java
 import java.util.*;
 
 public class Library {
     private List<Book> books = new ArrayList<>();
-    
+
     public void addBook(Book book) {
-        // BUG 4: Permite libros duplicados (mismo ISBN)
+        for (Book existing : books) {
+            if (existing.getIsbn().equals(book.getIsbn())) {
+                System.out.println("Ya existe un libro con ese ISBN");
+                return;
+            }
+        }
         books.add(book);
     }
-    
+
     public Book findBookByTitle(String title) {
-        // BUG 5: Sensible a mayúsculas/minúsculas
         for (Book book : books) {
-            if (book.getTitle().equals(title)) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
         }
         return null;
     }
-    
+
     public List<Book> findAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
-        // BUG 6: ConcurrentModificationException potencial
         for (Book book : books) {
-            if (true) { // BUG 7: Siempre true, no verifica disponibilidad real
+            if (book.isAvailable()) {
                 availableBooks.add(book);
             }
         }
         return availableBooks;
     }
-    
-    // BUG 8: Falta método para quitar libros
+
+    public boolean removeBook(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) {
+                books.remove(book);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<Book> getAllBooks() { //Lo necesitan los tests
+        return books;
+    }
 }
