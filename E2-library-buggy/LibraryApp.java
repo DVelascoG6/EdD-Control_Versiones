@@ -24,5 +24,11 @@ public class LibraryApp {
         
         // Listar disponibles
         System.out.println("Libros disponibles: " + library.findAvailableBooks().size());
+
+
+        // Esta parte es del test en pocas palabras Library Test
+        LibraryTest test = new LibraryTest();
+        test.testAddDuplicateBook();
+        System.out.println("Test pasado correctamente");
     }
 }

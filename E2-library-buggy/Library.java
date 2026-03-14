@@ -4,8 +4,16 @@ import java.util.*;
 public class Library {
     private List<Book> books = new ArrayList<>();
     
+    // Añadi un metodo getter para los libros (esto es algo nuevo)
+    public List<Book> getBooks() {
+        return books;
+    }
+
     public void addBook(Book book) {
         // BUG 4: Permite libros duplicados (mismo ISBN)
+        if (findBookByISBN(book.getISBN()) != null) {
+            return;
+        }
         books.add(book);
     }
     
@@ -13,6 +21,16 @@ public class Library {
         // BUG 5: Sensible a mayúsculas/minúsculas
         for (Book book : books) {
             if (book.getTitle().equals(title)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    // Metodo find book por ISBN
+    public Book findBookByISBN(String isbn) {
+        for (Book book : books) {
+            if (book.getISBN().equals(isbn)) {
                 return book;
             }
         }
